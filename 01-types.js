@@ -1,31 +1,31 @@
 require('./lib')
 
 test('undefined', () => {
-  let a = 'yo'
+  let a = undefined
   expect(typeof a).toBe('undefined')
 })
 
 test('string', () => {
-  let a
+  let a = 'a'
   expect(typeof a).toBe('string')
 })
 
 test('number', () => {
-  let a
+  let a = 1
   expect(typeof a).toBe('number')
 })
 
 test('boolean', () => {
-  let a
+  let a = true
   expect(typeof a).toBe('boolean')
 })
 
 test('object', () => {
-  let a
+  let a = {}
   expect(typeof a).toBe('object')
 })
 
 test('function', () => {
-  let a
+  let a = () => {}
   expect(typeof a).toBe('function')
 })

@@ -3,7 +3,11 @@ require('./lib')
 /////////////
 
 function createAdder () {
-  return
+  let value = 0
+  return {
+    add: num => (value += num),
+    value: () => value
+  }
 }
 
 /////////////
@@ -19,22 +23,21 @@ test('lets me add 2 things together', () => {
 /////////////
 
 function random () {
-  return
+  return Math.floor(Math.random(10))
 }
 
 /////////////
 
 test('random', () => {
-  let fn = random()
   for (let i = 0; i < 1000; ++i) {
-    expect([0, 1, 2, 3, 4, 5, 6, 7, 8, 9].includes(random())).toBe(true)
+    expect(random()).toBeOneOf([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
   }
 })
 
 /////////////
 
-function compose () {
-  return
+function compose (...args) {
+  return num => args.reduce((acc, val) => val(acc), num)
 }
 
 /////////////
@@ -55,8 +58,15 @@ test('can compose functions', () => {
 
 /////////////
 
-function uppity () {
-  return
+function uppity (strings, ...values) {
+  let newValues = [...values, ''].map(e =>
+    typeof e === 'string' ? e.toUpperCase() : e + 1
+  )
+  const arr3 = []
+  for (i in strings) {
+    arr3.push(strings[i], newValues[i])
+  }
+  return arr3.join('')
 }
 
 /////////////

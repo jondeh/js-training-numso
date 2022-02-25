@@ -3,7 +3,11 @@ require('./lib')
 /////////////
 
 function typeChecker (someValue) {
-  return
+  return Object.prototype.toString
+    .call(someValue)
+    .split(' ')[1]
+    .replace(']', '')
+    .toLowerCase()
 }
 
 /////////////
